@@ -1,10 +1,13 @@
 package com.codebay.goldeneye;
 
+// This class represents an employee
 public class Employee {
 
   private String name;
   private String department;
   private String office;
+
+  // Getters and setters
 
   public String getName() {
     return name;
@@ -30,6 +33,8 @@ public class Employee {
     this.office = office;
   }
 
+
+  // toString method for debugging
   @Override
   public String toString() {
     return "Employee{" +
