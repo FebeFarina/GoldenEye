@@ -24,6 +24,11 @@ public class WebController {
                 + employee.getOffice() + ".goldeneye.com";
     }
 
+    // This method checks if the name is valid
+    private Boolean isValidName(Employee employee) {
+        return employee.getName().split(" ").length == 2;
+    }
+
     // This method checks if the department is valid for the office
     private Boolean isValidDepartment(Employee employee) {
         switch (employee.getOffice()) {
@@ -48,6 +53,7 @@ public class WebController {
         return false;
     }
 
+    // Default endpoint
     @GetMapping("/")
     public String home() {
         return "index";
@@ -60,15 +66,19 @@ public class WebController {
         return "email";
     }
 
-    // When the user submits the form, the email is generated and the department is
-    // checked
+    // When the user submits the form, the email is generated and the department and
+    // name are checked
     @PostMapping("/email")
     public String submitForm(@ModelAttribute("employee") Employee employee, Model model) {
+
+        if (!isValidName(employee) || !isValidDepartment(employee)) {
+            return "invalidForm";
+        }
 
         String email = generateEmail(employee);
         model.addAttribute("email", email);
 
-        return isValidDepartment(employee) ? "result" : "invalidForm";
+        return "result";
 
     }
 }

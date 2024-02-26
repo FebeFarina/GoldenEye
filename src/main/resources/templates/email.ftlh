@@ -11,7 +11,7 @@
     <form action="/email" method="POST" modelAttribute="employee">
         <table>
             <tr>
-                <td><label for="name">Name</label></td>
+                <td><label for="name">Full name</label></td>
                 <td><input name="name" id="name"/></td>
             </tr>
             <tr>

@@ -8,7 +8,8 @@
 
 <body>
     <h1>Error</h1>
-    <p>Error in form: ${employee.office} is not compatible with ${employee.department}</p>
+    <p>Error in form, please check all info again</p>
+    <a href=/email>Go back</a>
     
 </body>
 
