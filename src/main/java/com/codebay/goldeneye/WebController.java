@@ -48,14 +48,20 @@ public class WebController {
         return false;
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
+
     // When the user accesses the /email endpoint, a new Employee object is created
     @GetMapping("/email")
     public String emailForm(Model model) {
         model.addAttribute("employee", new Employee());
-        return "index";
+        return "email";
     }
 
-    // When the user submits the form, the email is generated and the department is checked
+    // When the user submits the form, the email is generated and the department is
+    // checked
     @PostMapping("/email")
     public String submitForm(@ModelAttribute("employee") Employee employee, Model model) {
 
