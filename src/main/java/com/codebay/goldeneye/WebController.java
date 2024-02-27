@@ -2,9 +2,11 @@ package com.codebay.goldeneye;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import javax.validation.Valid;
 
 @Controller
 public class WebController {
@@ -12,21 +14,14 @@ public class WebController {
     // This method generates the email for the employee
     private String generateEmail(Employee employee) {
 
-        /*
-         * To separate the first name and surname, we split the name by space.
-         * Then, we take the first letter of the first name and the surname.
-         */
-        String[] name = employee.getName().toLowerCase().split(" ");
-        String firstLetterName = name[0].substring(0, 1);
-        String surName = name[1];
-
-        return firstLetterName + surName + "." + employee.getDepartment() + "@"
+        String firstLetterName = employee.getFirstName().substring(0, 1).toLowerCase();
+        return firstLetterName + employee.getSurname().toLowerCase() + "." + employee.getDepartment() + "@"
                 + employee.getOffice() + ".goldeneye.com";
     }
 
     // This method checks if the name is valid
     private Boolean isValidName(Employee employee) {
-        return employee.getName().split(" ").length == 2;
+        return employee.getFirstName().length() > 0 && employee.getSurname().length() > 0;
     }
 
     // This method checks if the department is valid for the office
@@ -69,9 +64,10 @@ public class WebController {
     // When the user submits the form, the email is generated and the department and
     // name are checked
     @PostMapping("/email")
-    public String submitForm(@ModelAttribute("employee") Employee employee, Model model) {
+    public String submitForm(@ModelAttribute("employee") @Valid Employee employee, BindingResult result, Model model) {
 
-        if (!isValidName(employee) || !isValidDepartment(employee)) {
+        if (result.hasErrors()) {
+            model.addAttribute("error", result.getAllErrors().get(0).getDefaultMessage());
             return "invalidForm";
         }
 

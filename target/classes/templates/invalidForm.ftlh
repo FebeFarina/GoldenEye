@@ -8,9 +8,9 @@
 
 <body>
     <h1>Error</h1>
-    <p>Error in form, please check all info again</p>
+    <p>Error in form: ${error}</p>
     <a href=/email>Go back</a>
-    
+
 </body>
 
-</html>
+</html> 
