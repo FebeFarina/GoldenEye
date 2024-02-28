@@ -7,6 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
         }
 
         h1 {
@@ -124,7 +125,7 @@
                 option.disabled = true;
             } else if (department === 'advertising' && (option.value === 'spain')) {
                 option.disabled = true;
-            } else if (department === 'researchdevelopment' && (option.value === 'milan') || option.value === 'newyork') {
+            } else if (department === 'researchdevelopment' && (option.value === 'milan' || option.value === 'newyork')) {
                 option.disabled = true;
             }
         }
