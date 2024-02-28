@@ -15,7 +15,11 @@ public class WebController {
     private String generateEmail(Employee employee) {
 
         String firstLetterName = employee.getFirstName().substring(0, 1).toLowerCase();
-        return firstLetterName + employee.getSurname().toLowerCase() + "." + employee.getDepartment() + "@"
+
+        String[] surnameSplit = employee.getSurname().split(" ");
+        String surname = surnameSplit[0].toLowerCase();
+
+        return firstLetterName + surname + "." + employee.getDepartment() + "@"
                 + employee.getOffice() + ".goldeneye.com";
     }
 
