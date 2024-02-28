@@ -37,7 +37,7 @@
 
 <body>
     <h1>Result</h1>
-    <p>${email}</p>
+    <p>Your email is ${email}</p>
     <a href="/email" class="button"> Get another email </a>
 </body>
 

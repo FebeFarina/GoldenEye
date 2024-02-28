@@ -108,8 +108,7 @@ public class WebController {
 
     /**
      * This method submits the form. It checks if the name and department are valid
-     * before
-     * generating the email
+     * before generating the email
      * 
      * @param employee The employee object created
      * @param model    The model
