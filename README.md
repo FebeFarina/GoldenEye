@@ -1,3 +1,5 @@
+[![Javadoc](https://img.shields.io/badge/JavaDoc-Online-green)](https://FebeFarina.github.io/GoldenEye/javadoc/)
+
 # GoldenEye Project
 
 ## What you need
