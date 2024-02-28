@@ -38,6 +38,7 @@
 <body>
     <h1><a href="/">Goldeneye</a></h1>
     <a href="/email" class="button">Get email</a>
+    <a href="../../../../target/site/apidocs/index.html" target="_blank" class="button">Documentation</a>
 
 </body>
 
